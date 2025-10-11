@@ -1,4 +1,5 @@
 ﻿using Backend.Infrastructure.Persistence;
+using Backend.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,9 @@ namespace Backend.Infrastructure.Extensions
         {
             services.AddDbContext<FootballersDbContext>(options => 
                 options.UseMySql(configuration.GetConnectionString("Footballers"), ServerVersion.AutoDetect(configuration.GetConnectionString("Footballers"))));
+
+            services.AddScoped<FootballersSeeder>();
+        
         }
     }
 }
