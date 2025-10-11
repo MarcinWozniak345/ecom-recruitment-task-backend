@@ -1,6 +1,7 @@
 using Backend.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Backend.Infrastructure.Extensions;
+using Backend.Infrastructure.Seeders;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -15,6 +16,9 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<FootballersSeeder>();
+await seeder.Seed();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
