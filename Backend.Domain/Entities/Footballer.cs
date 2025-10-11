@@ -20,6 +20,6 @@ namespace Backend.Domain.Entities
         public int Age { get; set; }
         public Guid Guid { get; set; }
         public bool IsDeleted { get; set; }
-        public DateTime DeletedDate { get; set; }
+        public DateTime? DeletedDate { get; set; }
     }
 }
