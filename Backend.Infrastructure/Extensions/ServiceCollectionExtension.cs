@@ -1,4 +1,6 @@
-﻿using Backend.Infrastructure.Persistence;
+﻿using Backend.Domain.Interfaces;
+using Backend.Infrastructure.Persistence;
+using Backend.Infrastructure.Repositories;
 using Backend.Infrastructure.Seeders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,7 +21,8 @@ namespace Backend.Infrastructure.Extensions
                 options.UseMySql(configuration.GetConnectionString("Footballers"), ServerVersion.AutoDetect(configuration.GetConnectionString("Footballers"))));
 
             services.AddScoped<FootballersSeeder>();
-        
+            services.AddScoped<IFootballerRepository, FootballerRepository>();
+
         }
     }
 }
