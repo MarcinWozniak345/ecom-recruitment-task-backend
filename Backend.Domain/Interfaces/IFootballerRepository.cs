@@ -10,5 +10,6 @@ namespace Backend.Domain.Interfaces
     public interface IFootballerRepository
     {
         List<Footballer> GetAllFootballers();
+        Footballer GetFootballer(Guid guid);
     }
 }
