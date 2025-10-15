@@ -13,6 +13,10 @@ namespace Backend.Application.Mappings
         public FootbalersMappingProfile() 
         {
             CreateMap<Backend.Domain.Entities.Footballer, FootballerDTO>();
+
+            CreateMap<CreateFootbalerDTO, Backend.Domain.Entities.Footballer>();
+
+            CreateMap<UpdateFootbalerDTO, Backend.Domain.Entities.Footballer>();
         }
     }
 }
