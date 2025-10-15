@@ -11,5 +11,8 @@ namespace Backend.Application.Services
     {
         List<FootballerDTO> GetAllFootballers();
         FootballerDTO GetFootballer(Guid guid);
+        Task DeleteFootballer(Guid guid);
+        Task CreateFootballer(CreateFootbalerDTO newFootballer);
+        Task UpdateFootballer(UpdateFootbalerDTO updatedFootballer);
     }
 }

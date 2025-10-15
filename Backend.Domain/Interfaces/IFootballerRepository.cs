@@ -11,5 +11,10 @@ namespace Backend.Domain.Interfaces
     {
         List<Footballer> GetAllFootballers();
         Footballer GetFootballer(Guid guid);
+        Task DeleteFootballer(Guid guid);
+
+        Task CreateNewFootballer(Footballer footballer);
+
+        Task UpdateFootballer(Footballer footballer);
     }
 }

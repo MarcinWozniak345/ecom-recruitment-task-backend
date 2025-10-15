@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Backend.Application.Models;
+using Backend.Domain.Entities;
 using Backend.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,17 @@ namespace Backend.Application.Services
             _mapper = mapper;
         }
 
+        public async Task CreateFootballer(CreateFootbalerDTO newFootballer)
+        {
+            var data = _mapper.Map<Domain.Entities.Footballer>(newFootballer);
+            await _footballerRepository.CreateNewFootballer(data);
+        }
+
+        public async Task DeleteFootballer(Guid guid)
+        {
+            await _footballerRepository.DeleteFootballer(guid);
+        }
+
         public List<FootballerDTO> GetAllFootballers()
         {
             var data = _footballerRepository.GetAllFootballers();
@@ -31,6 +43,12 @@ namespace Backend.Application.Services
             var data = _footballerRepository.GetFootballer(guid);
             var result = _mapper.Map<FootballerDTO>(data);
             return result;
+        }
+
+        public async Task UpdateFootballer(UpdateFootbalerDTO updatedFootballer)
+        {
+            var f = _mapper.Map<Domain.Entities.Footballer>(updatedFootballer);
+            await _footballerRepository.UpdateFootballer(f);
         }
     }
 }
